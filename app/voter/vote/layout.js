@@ -1,5 +1,3 @@
-// import HotmailPage from "../hotmail/page";
-
 export const metadata = {
   title: "Vote",
   description: "Support businesses through mutual voting",
@@ -24,6 +22,6 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function VoteLayout({ children }) {
   return <main>{children}</main>;
 }

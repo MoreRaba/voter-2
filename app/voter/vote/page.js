@@ -1,36 +1,24 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import InstagramIcon from "@mui/icons-material/Instagram";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
+
+import { getServerVotes } from "@/utils/serverUtils/getServerVotes";
 
 export default function Vote() {
   const [voteCount, setVoteCount] = useState(null);
 
   useEffect(() => {
-    const fetchVoteCount = async () => {
-      try {
-        const response = await fetch("http://localhost/server/", {
-          method: "GET",
-        });
-        if (!response.ok) {
-          throw new Error(
-            `Network response was not ok - ${response.status} ${response.statusText}`
-          );
-        }
+    const getVotes = async () => {
+      const response = await getServerVotes();
 
-        const data = await response.json();
-        setVoteCount(data);
-
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
+      setVoteCount(response);
     };
 
-    fetchVoteCount();
+    getVotes();
   }, []);
 
   return (
@@ -47,14 +35,14 @@ export default function Vote() {
                 Influencing Agent
               </h3>
               <div className="flex flex-row gap-3 text-white">
-                <Link href="/pages/voter/instagram">
+                <Link href="/voter/instagram">
                   {" "}
                   <button className="bg-green-600 px-2 md:px-4 py-2 rounded-md">
                     VOTE WITH <InstagramIcon />
                   </button>
                 </Link>
 
-                <Link href="/pages/voter/hotmail">
+                <Link href="/voter/hotmail">
                   <button className="bg-red-500 px-4 py-2 rounded-md">
                     VOTE WITH <MarkEmailUnreadIcon />
                   </button>

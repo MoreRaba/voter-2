@@ -1,15 +1,20 @@
 "use client";
 
+// React and Next imports
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Img imports
 import Apple from "@/public/apple-store.png";
 import Instagram_logo from "@/public/Instagram_logo.png";
 import Facebook from "@/public/facebook.png";
 import Google from "@/public/google-play.png";
-import { useEffect, useState } from "react";
+
+// Page Import
 import Loading from "@/app/pages/voter/instagram/loading";
 
+// utils Imports
 import { getIp, getLocationDetails } from "@/utils/thirdPartyUtils";
 import { insertToServer } from "@/utils/serverUtils";
 

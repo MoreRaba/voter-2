@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import Instagram from "@/public/instagram.png";
 import From_meta from "@/public/from_meta.png";
 

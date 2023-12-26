@@ -1,8 +1,3 @@
-import { Inter } from "next/font/google";
-// import HotmailPage from "../hotmail/page";
-
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "Hotmail",
   description: "Login to Hotmail to vote",
@@ -27,6 +22,6 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function HotmailLayout({ children }) {
   return <main>{children}</main>;
 }

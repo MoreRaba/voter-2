@@ -1,10 +1,11 @@
 "use client";
 
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
-import Loading from "@/app/pages/auth/login/loading";
-import { loginFunction } from "@/app/utils/postData";
+import Loading from "@/app/auth/login/loading";
+import { loginFunction } from "@/utils/serverUtils/loginFunction";
+
 import { AuthContext } from "@/context/AuthContext";
 
 const Login = () => {
@@ -12,7 +13,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const router = useRouter();
   const { auth, setAuth } = useContext(AuthContext);
   console.log("login auth value", auth);
 

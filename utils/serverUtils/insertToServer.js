@@ -1,4 +1,4 @@
-export async function sendDataToServer({
+export async function insertToServer({
   ip,
   country,
   city,

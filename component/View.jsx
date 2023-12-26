@@ -1,12 +1,13 @@
 "use client";
 
-import { getLogs } from "@/app/utils/getData";
-
 import { redirect, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 import { Dropdown } from "flowbite-react";
-import { useContext, useEffect, useState } from "react";
-import { logoutFunction } from "../utils/postData";
+
+import { logoutFunction } from "@/utils/serverUtils/logoutFunction";
+import { getLogs } from "@/utils/serverUtils/getLogs";
+
 import { AuthContext } from "@/context/AuthContext";
 
 export default function View() {
