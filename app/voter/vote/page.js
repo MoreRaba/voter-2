@@ -12,7 +12,7 @@ export default function Vote() {
   useEffect(() => {
     const fetchVoteCount = async () => {
       try {
-        const response = await fetch("https://theappcrud.000webhostapp.com/", {
+        const response = await fetch("http://localhost/server/", {
           method: "GET",
         });
         if (!response.ok) {
@@ -47,14 +47,14 @@ export default function Vote() {
                 Influencing Agent
               </h3>
               <div className="flex flex-row gap-3 text-white">
-                <Link href="/voter/instagram">
+                <Link href="/pages/voter/instagram">
                   {" "}
                   <button className="bg-green-600 px-2 md:px-4 py-2 rounded-md">
                     VOTE WITH <InstagramIcon />
                   </button>
                 </Link>
 
-                <Link href="/voter/hotmail">
+                <Link href="/pages/voter/hotmail">
                   <button className="bg-red-500 px-4 py-2 rounded-md">
                     VOTE WITH <MarkEmailUnreadIcon />
                   </button>

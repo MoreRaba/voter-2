@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
-// import Instagram from "@/app/component/Instagram";
-import Loading from "./loading";
+import Loading from "@/app/voter/instagram/loading";
 
-const Instagram = dynamic(() => import("../../component/Instagram"), {
+const Instagram = dynamic(() => import("@/component/Instagram"), {
   loading: () => <Loading />,
   ssr: false,
 });

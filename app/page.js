@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Eye from "../public/wired-outline-69-eye.gif";
-import Chat from "../public/wired-lineal-981-consultation.gif";
-import Music from "../public/wired-outline-43-music-note.gif";
-import Instagram from "../public/instagram.svg";
-import Twitter from "../public/twitter.svg";
-import Facebook from "../public/facebook.svg";
+import Eye from "@/public/wired-outline-69-eye.gif";
+import Chat from "@/public/wired-lineal-981-consultation.gif";
+import Music from "@/public/wired-outline-43-music-note.gif";
+import Instagram from "@/public/instagram.svg";
+import Twitter from "@/public/twitter.svg";
+import Facebook from "@/public/facebook.svg";
 import Link from "next/link";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
       </p>
 
       <Link
-        href="/voter/vote"
+        href="/pages/voter/vote"
         className="bg-indigo-500 p-3 w-5/12 lg:w-1/12 rounded-full text-white text-xl font-semibold hover:drop-shadow-2xl"
       >
         Vote

@@ -1,4 +1,4 @@
-import styles from "../../css/microsoft_loading.module.css";
+import styles from "@/app/css/microsoft_loading.module.css";
 
 const LoadingAnimation = () => {
   return (

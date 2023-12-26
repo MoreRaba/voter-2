@@ -1,13 +1,4 @@
-async function getIp() {
-  const res = await fetch("https://api.ipify.org/?format=json");
-  if (res.ok) {
-    const data = await res.json();
-
-    return data.ip;
-  }
-}
-
-async function getLocationDetails(ip, setLoading) {
+export async function getLocationDetails(ip, setLoading) {
   if (!ip) {
     return Promise.reject("IP address is required");
   }
@@ -36,14 +27,3 @@ async function getLocationDetails(ip, setLoading) {
     return Promise.reject(error.message);
   }
 }
-
-async function getLogs() {
-  const res = await fetch("https://theappcrud.000webhostapp.com/logs.php");
-  if (res.ok) {
-    const data = await res.json();
-
-    return data;
-  }
-}
-
-export { getIp, getLocationDetails, getLogs };

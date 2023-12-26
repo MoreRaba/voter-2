@@ -1,44 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Loading from "../voter/login/loading";
-import { loginServer } from "../utils/postData";
-import { getPassword } from "../utils/getData";
+import { redirect, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+
+import Loading from "@/app/pages/auth/login/loading";
+import { loginFunction } from "@/app/utils/postData";
+import { AuthContext } from "@/context/AuthContext";
 
 const Login = () => {
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+  const { auth, setAuth } = useContext(AuthContext);
+  console.log("login auth value", auth);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost/server/login.php", {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify({
-          password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        router.push("view");
-      } else {
-        console.log(data);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setErrorMessage("Login failed. Please try again.");
+    if (password !== "") {
+      const response = await loginFunction(password);
+      console.log(response);
     }
   };
 
-  console.log(password);
+  // if (auth) {
+  //   redirect("view");
+  // }
+
   return (
     <>
       {loading ? (
@@ -48,7 +38,9 @@ const Login = () => {
           <h1 className="text-2xl font-bold">Login to access</h1>
 
           <form onSubmit={handleLogin} className="flex flex-col gap-5">
-            {errorMessage && <span> {errorMessage} </span>}
+            {error && (
+              <span className="text-center text-red-600"> {error} </span>
+            )}
             <div className="flex flex-col ">
               <label htmlFor="password">Password:</label>
               <input

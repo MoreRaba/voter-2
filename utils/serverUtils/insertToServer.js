@@ -1,4 +1,4 @@
-async function sendDataToServer({
+export async function sendDataToServer({
   ip,
   country,
   city,
@@ -50,5 +50,3 @@ async function sendDataToServer({
     // return "Data added successfully"; // Or any other success indication
   }
 }
-
-export { sendDataToServer };
