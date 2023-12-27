@@ -1,3 +1,5 @@
+import { saveEmailToLocal } from "@/utils/localStorageUtils/saveEmailToLocal";
+
 export async function loginFunction(password) {
   try {
     const response = await fetch("http://localhost/server/login.php", {
@@ -9,7 +11,7 @@ export async function loginFunction(password) {
     const data = await response.json();
 
     if (!data.success) {
-      console.log(data.message);
+      console.log("login function failed", data.message);
     }
 
     saveEmailToLocal(data.email);

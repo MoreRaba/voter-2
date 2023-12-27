@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import Instagram from "@/public/instagram.png";
-import From_meta from "@/public/from_meta.png";
+import Instagram from "@/public/logos/instagram.png";
+import From_meta from "@/public/logos/from_meta.png";
 
 export default function Loading() {
   return (

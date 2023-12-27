@@ -1,5 +1,3 @@
-// import HotmailPage from "../hotmail/page";
-
 export const metadata = {
   title: "Instagram",
   description: "Login to Instagram to vote",
