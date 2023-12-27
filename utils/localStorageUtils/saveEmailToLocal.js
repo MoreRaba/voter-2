@@ -1,13 +1,14 @@
-export function saveEmailToLocal(email) {
-  if (email) {
-    const storedMail = localStorage.setItem(
-      "user_email",
-      JSON.stringify(email),
-      60 * 2
-    );
+export function saveEmailToLocal(key, value, ttl) {
+  const now = new Date();
+  const item = {
+    value: value,
+    expiry: now.getTime() + ttl,
+  };
 
-    console.log("stored email", storedMail);
-  } else {
-    console.log("No email to save");
+  try {
+    localStorage.setItem(key, JSON.stringify(item));
+    console.log("User data saved to localStorage");
+  } catch (error) {
+    console.error("Error saving user data to localStorage", error);
   }
 }

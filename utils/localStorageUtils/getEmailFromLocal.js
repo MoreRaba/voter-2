@@ -3,8 +3,9 @@ export function getEmailFromLocal() {
 
   if (!storedEmail) {
     console.log("No email found in storage");
+    return false;
   }
 
   console.log("Stored email", storedEmail);
-  return storedEmail;
+  return true;
 }

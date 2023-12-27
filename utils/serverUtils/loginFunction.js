@@ -7,15 +7,23 @@ export async function loginFunction(password) {
       mode: "cors",
       body: JSON.stringify({ password }),
     });
-
     const data = await response.json();
 
-    if (!data.success) {
-      console.log("login function failed", data.message);
+    if (!data) {
+      console.log("Server failed");
     }
 
-    saveEmailToLocal(data.email);
-    return data;
+    if (!data.success) {
+      console.log("login failed", data.message);
+      return data;
+    }
+
+    if (data.success) {
+      console.log("email", data.email);
+
+      saveEmailToLocal("user_email", data.email, 3600000);
+      return data;
+    }
   } catch (error) {
     console.error("Login error:", error);
   }

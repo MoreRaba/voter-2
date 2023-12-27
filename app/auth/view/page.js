@@ -1,7 +1,7 @@
 "use client";
 
-import { redirect, useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Dropdown } from "flowbite-react";
 
@@ -9,15 +9,8 @@ import { logoutFunction } from "@/utils/serverUtils/logoutFunction";
 import { getLogs } from "@/utils/serverUtils/getLogs";
 import { getEmailFromLocal } from "@/utils/localStorageUtils/getEmailFromLocal";
 
-import { AuthContext } from "@/context/AuthContext";
-
 export default function View() {
   const [logs, setLogs] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(null);
-  const [email, setEmail] = useState(null);
-
-  const { auth, setAuth } = useContext(AuthContext);
-  console.log(auth);
 
   useEffect(() => {
     const getLogins = async () => {
@@ -26,23 +19,19 @@ export default function View() {
     };
 
     const userMail = getEmailFromLocal();
-    setAuth(userMail);
+
+    if (!userMail) {
+      redirect("login");
+    }
 
     getLogins();
   }, []);
 
-  // const handleLogout = async () => {
-  //   await logoutFunction().then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-
-  // console.log("Logged in", loggedIn);
-  // console.log("auth", auth);
-
-  if (!auth) {
-    redirect("login");
-  }
+  const handleLogout = async () => {
+    await logoutFunction().then((res) => {
+      console.log(res);
+    });
+  };
 
   return (
     <section className="flex flex-col">

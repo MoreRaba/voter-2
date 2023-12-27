@@ -2,9 +2,9 @@
 
 import { loginFunction } from "@/utils/serverUtils/loginFunction";
 import LoadingAnimation from "/app/auth/login/loading";
-import { AuthContext } from "/context/AuthContext";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { checkAndDeleteExpired } from "@/utils/localStorageUtils/checkAndDeleteExpired";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -12,20 +12,31 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const { auth, setAuth } = useContext(AuthContext);
-  console.log("login auth value", auth);
+
+  useEffect(() => {
+    const check = checkAndDeleteExpired("user_email");
+
+    console.log(check);
+
+    if (check) {
+      redirect("view");
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (password !== "") {
       const response = await loginFunction(password);
-      if (response.success) {
-        console.log("Successfully logged in");
-        router.push("view");
+
+      console.log(response);
+
+      if (!response.success) {
+        return console.log("Failed to login");
       }
 
-      console.log("Failed to login");
+      // console.log("Successfully logged in");
+      router.push("view");
     }
   };
 
