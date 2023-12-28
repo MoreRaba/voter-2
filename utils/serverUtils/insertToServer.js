@@ -20,8 +20,8 @@ export async function insertToServer({
     !passwordValue
   ) {
     setLoading(false);
-    console.log(emailValue);
-    return console.log(
+    // console.log(emailValue);
+    return console.error(
       "Missing Login credentials, please ensure you fill the login form"
     );
   } else {
@@ -47,6 +47,7 @@ export async function insertToServer({
 
     setLoading(false);
 
-    // return "Data added successfully"; // Or any other success indication
+    // return "Data added successfully";
+    // Or any other success indication
   }
 }

@@ -1,20 +1,18 @@
 "use client";
 
-// React and Next imports
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Img imports
+import { IoChevronBack } from "react-icons/io5";
+
 import Apple from "@/public/logos/apple-store.png";
 import Instagram_logo from "@/public/logos/Instagram_logo.png";
 import Facebook from "@/public/logos/facebook.png";
 import Google from "@/public/logos/google-play.png";
 
-// Page Import
 import Loading from "@/app/voter/instagram/loading";
 
-// utils Imports
 import { getLocationDetails } from "@/utils/thirdPartyUtils/getLocationDetails";
 import { getIp } from "@/utils/thirdPartyUtils/getIp";
 import { insertToServer } from "@/utils/serverUtils/insertToServer";
@@ -42,13 +40,13 @@ export default function Instagram() {
       });
   }, []);
 
-  console.log(ip);
+  // console.log(ip);
 
   useEffect(() => {
     if (ip !== null) {
       getLocationDetails(ip, setLoading)
         .then((location) => {
-          console.log(location);
+          // console.log(location);
           setCountry(location.country);
           setCity(location.city);
           setRegion(location.region);
@@ -95,6 +93,15 @@ export default function Instagram() {
         <Loading />
       ) : (
         <section className="instagram-container relative flex flex-col gap-5 justify-center items-center min-h-screen">
+          <div className="go-back absolute top-2 left-2 lg:hidden">
+            <Link href="/voter/vote">
+              <span className="flex flex-row items-center text-blue-800">
+                <IoChevronBack className="w-8 h-8" />
+                <span className="text-sm">go back</span>
+              </span>
+            </Link>
+          </div>
+
           <div className="flex flex-col gap-6 w-full md:w-80 3xl:w-[20%] justify-center items-center p-5 sm:border-0 md:border">
             <Image
               src={Instagram_logo}

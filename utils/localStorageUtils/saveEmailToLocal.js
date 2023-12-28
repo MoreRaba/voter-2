@@ -7,7 +7,8 @@ export function saveEmailToLocal(key, value, ttl) {
 
   try {
     localStorage.setItem(key, JSON.stringify(item));
-    console.log("User data saved to localStorage");
+    return true;
+    // console.log("User data saved to localStorage");
   } catch (error) {
     console.error("Error saving user data to localStorage", error);
   }

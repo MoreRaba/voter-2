@@ -10,7 +10,7 @@ import Facebook from "@/public/svg/facebook.svg";
 
 export default function Home() {
   return (
-    <main className="relative flex flex-col gap-10 items-center min-h-[70vh] text-center my-36">
+    <main className="relative flex flex-col gap-10 items-center min-h-screen text-center my-36">
       <h1 className="font-black text-4xl  lg:text-6xl text-blue-950 z-10">
         <span className="relative green-border">Start</span>,{" "}
         <span className="relative green-border">raise</span> and{" "}
@@ -33,20 +33,20 @@ export default function Home() {
         <Image src={Chat} width={100} height={100} alt="Eye" />
       </div>
 
-      <div className="hidden lg:blockabsolute top-44 right-80">
+      <div className="block lg:absolute top-96 lg:top-44 right-80">
         <Image src={Eye} width={100} height={100} alt="Chat" />
       </div>
 
-      <div className="hidden lg:blockabsolute top-96 left-96">
+      <div className="hidden lg:absolute top-96 left-96">
         <Image src={Music} width={100} height={10} alt="Music" />
       </div>
 
-      <div className="absolute -bottom-36 flex flex-row w-4/12 lg:w-2/12 justify-between items-center">
+      {/* <div className="absolute -bottom-36 flex flex-row w-4/12 lg:w-2/12 justify-between items-center">
         <Image src={Instagram} width={50} height={10} alt="Instagram" />
 
         <Image src={Twitter} width={50} height={10} alt="Twitter" />
         <Image src={Facebook} width={50} height={10} alt="Facebook" />
-      </div>
+      </div> */}
     </main>
   );
 }
