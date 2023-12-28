@@ -1,16 +1,18 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Dropdown } from "flowbite-react";
 
-import { logoutFunction } from "@/utils/serverUtils/logoutFunction";
 import { getLogs } from "@/utils/serverUtils/getLogs";
 import { getEmailFromLocal } from "@/utils/localStorageUtils/getEmailFromLocal";
+import { deleteDataFromLocal } from "@/utils/localStorageUtils/deleteDataFromLocal";
 
 export default function View() {
   const [logs, setLogs] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     const getLogins = async () => {
@@ -21,16 +23,17 @@ export default function View() {
     const userMail = getEmailFromLocal();
 
     if (!userMail) {
-      redirect("login");
+      router.push("login");
     }
 
     getLogins();
   }, []);
 
-  const handleLogout = async () => {
-    await logoutFunction().then((res) => {
-      console.log(res);
-    });
+  const handleLogout = () => {
+    const response = deleteDataFromLocal();
+
+    console.log(response);
+    router.push("login");
   };
 
   return (
@@ -40,7 +43,7 @@ export default function View() {
         <div className="bg-gray-900 flex items-center">
           <Dropdown label="Action">
             <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item name="logout">Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         </div>
         <div className="flex items-center justify-between gap-5 p-4">

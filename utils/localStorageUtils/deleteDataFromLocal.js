@@ -1,4 +1,13 @@
+import { getEmailFromLocal } from "./getEmailFromLocal";
+
 export function deleteDataFromLocal() {
-  const userAuth = localStorage.removeItem("user_email");
-  console.log(userAuth);
+  localStorage.removeItem("user_email");
+
+  const userAuth = getEmailFromLocal();
+
+  if (userAuth) {
+    return false;
+  }
+
+  return true;
 }

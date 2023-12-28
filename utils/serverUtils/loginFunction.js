@@ -7,7 +7,9 @@ export async function loginFunction(password) {
       mode: "cors",
       body: JSON.stringify({ password }),
     });
+
     const data = await response.json();
+    console.log(data);
 
     if (!data) {
       console.log("Server failed");
