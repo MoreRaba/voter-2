@@ -19,7 +19,7 @@ export default function Home() {
       </h1>
 
       <p className="text-md lg:text-xl font-bold text-blue-950">
-        The legals for the growing your voting agency, <b>Sorted.</b>
+        The legals for growing your voting agency, <b>Sorted.</b>
       </p>
 
       <Link
