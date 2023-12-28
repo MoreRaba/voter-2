@@ -9,19 +9,20 @@ export async function loginFunction(password) {
     });
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (!data) {
-      console.log("Server failed");
+      return false;
+      // console.log("Server failed");
     }
 
     if (!data.success) {
-      console.log("login failed", data.message);
+      // console.log("login failed", data.message);
       return data;
     }
 
     if (data.success) {
-      console.log("email", data.email);
+      // console.log("email", data.email);
 
       saveEmailToLocal("user_email", data.email, 3600000);
       return data;

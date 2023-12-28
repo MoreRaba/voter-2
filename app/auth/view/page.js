@@ -32,7 +32,7 @@ export default function View() {
   const handleLogout = () => {
     const response = deleteDataFromLocal();
 
-    console.log(response);
+    // console.log(response);
     router.push("login");
   };
 

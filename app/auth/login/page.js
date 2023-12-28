@@ -5,7 +5,7 @@ import LoadingAnimation from "/app/auth/login/loading";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { checkAndDeleteExpired } from "@/utils/localStorageUtils/checkAndDeleteExpired";
-import { checkServerCookie } from "@/utils/serverUtils/checkServerCookie";
+// import { checkServerCookie } from "@/utils/serverUtils/checkServerCookie";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -16,8 +16,6 @@ const Login = () => {
 
   useEffect(() => {
     const check = checkAndDeleteExpired("user_email");
-
-    console.log(check);
 
     if (check) {
       router.push("view");
@@ -30,24 +28,21 @@ const Login = () => {
     if (password !== "") {
       const response = await loginFunction(password);
 
-      console.log(response);
-
       if (!response.success) {
-        return console.log("Failed to login");
+        return alert("Failed to login");
       }
 
-      console.log("Successfully logged in");
-      router.push("view");
+      return router.push("view");
     }
   };
 
-  const checkCookie = async (e) => {
-    e.preventDefault();
-    const response = await checkServerCookie();
+  // const checkCookie = async (e) => {
+  //   e.preventDefault();
+  //   const response = await checkServerCookie();
 
-    const data = await response.json();
-    console.log(data);
-  };
+  //   const data = await response.json();
+  //   console.log(data);
+  // };
 
   return (
     <>
