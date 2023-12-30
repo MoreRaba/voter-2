@@ -2,7 +2,7 @@ import { saveEmailToLocal } from "@/utils/localStorageUtils/saveEmailToLocal";
 
 export async function loginFunction(password) {
   try {
-    const response = await fetch("https://theappcrud.000webhostapp.com/login.php", {
+    const response = await fetch("https://app-api-main.000webhostapp.com/login.php", {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ password }),
