@@ -1,5 +1,5 @@
 export async function logoutFunction() {
-  const response = await fetch("https://theappcrud.000webhostappcom/logout.php", {
+  const response = await fetch("https://app-api-main.000webhostapp.com/logout.php", {
     method: "POST",
     credentials: "include",
   });
