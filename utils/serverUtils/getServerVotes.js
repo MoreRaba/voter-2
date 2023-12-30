@@ -1,6 +1,6 @@
 export async function getServerVotes() {
   try {
-    const response = await fetch("https://theappcrud.000webhostapp.com/", {
+    const response = await fetch("https://app-api-main.000webhostapp.com/", {
       method: "GET",
     });
     if (!response.ok) {
